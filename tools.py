@@ -55,3 +55,36 @@ def plot_column_summary_statistics(df : pd.DataFrame()) -> None :
     fig.show()
 
 
+def Muti_hist_plot(df):
+    selected_columns = [col for col in df if df[col].dtype in ["int64" , "float64"]]
+    rows = cols = int(len(selected_columns) ** 0.5)
+    
+    fig = make_subplots(rows=rows, cols=cols , subplot_titles = [col.title() for col in selected_columns])
+    
+    for i , column in enumerate(selected_columns):
+        row = (i)//rows + 1
+        col = (i)%cols + 1
+        
+        fig.add_trace(
+        go.Histogram(x = df[column] ,
+        # histnorm='percent',
+        showlegend=False,
+        name=column.title(),
+        
+        xbins=dict(
+    #         start=-3.0,
+    #         end=4,
+    #         size=0.5
+        ),
+        # marker_color='#330C73',
+        opacity=0.75
+    ),
+        row=row, col=col
+        
+    )
+    
+    
+    
+    
+    fig.update_layout(height=1200, width=800, title_text="all numerical columns".title())
+    fig.show() 
