@@ -27,7 +27,7 @@ def drop_Outliers(col : str) -> pd.Series():
 def column_summary_statistics(df : pd.DataFrame() , groupby_column : str , target_column : str) -> pd.DataFrame():
 
     agg_list = ["sum" , "mean" , "max" , "min"]
-    agg_meaning_list = ["Total Price" , "Avarage Price" , "Highest Price" , "Lowest Price"]
+    agg_meaning_list = ["Total Price" , "Average Price" , "Highest Price" , "Lowest Price"]
     df = df.groupby(groupby_column)[target_column].agg(agg_list)
     df.columns = df.columns = agg_meaning_list
     return df
