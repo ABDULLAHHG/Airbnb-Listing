@@ -50,8 +50,14 @@ def plot_column_summary_statistics(df : pd.DataFrame()) -> None :
         row=row, col=col
 
     )
+    fig.update_layout(plot_bgcolor = "white",
+                 font = dict(color = "#909497", size = 18),
+                 title = dict(text = f"{df.index.name.title()} VS " + " , ".join([col for col in df.columns]), font = dict(size = 26)),
+                 margin = dict(t = 100, r = 80, b = 80, l = 120),
+                 hovermode="closest",
+                 height = 1200,
+                 width = 1000)
 
-    fig.update_layout(height=1200, width=800, title_text=f"{df.index.name} VS " + " , ".join([col for col in df.columns]) )
     fig.show()
 
 
@@ -85,6 +91,12 @@ def Muti_hist_plot(df):
     
     
     
-    
-    fig.update_layout(height=1200, width=800, title_text="all numerical columns".title())
+        fig.update_layout(plot_bgcolor = "white",
+                 font = dict(color = "#909497", size = 18),
+                 title = dict(text = "all numerical columns".title(), font = dict(size = 26)),
+                 margin = dict(t = 100, r = 80, b = 80, l = 120),
+                 hovermode="closest",
+                 height = 1000,
+                 width = 900)
+        
     fig.show() 
